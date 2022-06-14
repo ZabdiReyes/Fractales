@@ -50,7 +50,7 @@ import javax.swing.JFrame;
  *
  * @author Neil
  */
-public class JuliaExample {
+public class JuliaExampleColorChanged {
     // The width and height of the window.
     private static final int WIDTH = 350;
     private static final int HEIGHT = 350;
@@ -74,7 +74,7 @@ public class JuliaExample {
      * This handles the Frame, filling the array, painting,
      * and coloring.
      */
-    public JuliaExample(){
+    public JuliaExampleColorChanged(){
         // Create a BufferedImage to paint on.
         image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
         // Fill the booean[][].
@@ -84,7 +84,9 @@ public class JuliaExample {
         for(int i=0;i<WIDTH;i++){
             for(int j=0;j<HEIGHT;j++){
                 // If the point is in the Set, color it White, else, color it Black.
-                if(values[i][j]) image.setRGB(i, j, Color.WHITE.getRGB());
+                if(values[i][j]){
+                  image.setRGB(i, j, new Color((int)(Math.random()*1000)%256,0, (int)(Math.random()*1000)%128).getRGB());
+                }
                 if(!values[i][j]) image.setRGB(i, j, Color.BLACK.getRGB());
             }
         }
@@ -148,7 +150,7 @@ public class JuliaExample {
      * @param args Command Line args
      */
     public static void main(String[] args){
-        new JuliaExample();
+        new JuliaExampleColorChanged();
     }
 }
 
